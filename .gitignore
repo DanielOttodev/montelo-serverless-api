@@ -1,0 +1,8 @@
+# package directories
+node_modules
+jspm_packages
+
+config.js
+firebase_skey.json
+# Serverless directories
+.serverless

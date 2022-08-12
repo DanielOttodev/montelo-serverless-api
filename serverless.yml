@@ -1,0 +1,113 @@
+org: otto281
+app: montelo-api
+service: montelo-api
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-2
+  httpApi:
+    authorizers:
+      customAuthorizer:
+        type: request
+        functionName: authorizerFunc
+        
+
+functions:
+#Authorizer
+  authorizerFunc:
+    handler: auth.authToken
+
+# Users
+  listUsers:
+    handler: users.listUsers
+    events:
+      - httpApi:
+          path: /users
+          method: get
+          authorizer: 
+            name: customAuthorizer
+  getUser:
+    handler: users.getUser
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: get
+          authorizer:
+            name: customAuthorizer
+  addUser:
+    handler: users.addUser
+    events:
+      - httpApi:
+          path: /users
+          method: post
+  editUser:
+    handler: users.editUser
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: patch
+# Services
+  listServices:
+    handler: services.listService
+    events:
+      - httpApi:
+          path: /services
+          method: get
+  getService:
+    handler: services.getService
+    events:
+      - httpApi:
+          path: /services/{id}
+          method: get
+  addService:
+    handler: services.addService
+    events:
+      - httpApi:
+          path: /services
+          method: post
+  editService:
+    handler: services.editService
+    events:
+      - httpApi:
+          path: /services/{id}
+          method: patch
+  deleteService:
+    handler: services.deleteService
+    events:
+      - httpApi:
+          path: /services/{id}
+          method: delete
+# Clients
+  listClients:
+    handler: client.listClients
+    events:
+      - httpApi:
+          path: /client
+          method: get
+  getClient:
+    handler: client.getClient
+    events:
+      - httpApi:
+          path: /client/{id}
+          method: get
+  addClient:
+    handler: client.addClient
+    events:
+      - httpApi:
+          path: /client
+          method: post
+  editClient:
+    handler: client.editClient
+    events:
+      - httpApi:
+          path: /client/{id}
+          method: patch
+  deleteClient:
+    handler: client.deleteClient
+    events:
+      - httpApi:
+          path: /client/{id}
+          method: delete
