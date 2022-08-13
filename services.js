@@ -1,3 +1,5 @@
+const {query} = require('./db')
+
 exports.listService = async (event) => {
     console.log(event);
     const res = await query("select * from Services")
@@ -28,5 +30,11 @@ exports.editService = async (event) => {
     
 }
 exports.deleteService = async (event) => {
-    
+    console.log(event);
+    const res = await query(`DELETE from Services where serviceId = var  and businessId = var `)
+    let response = {
+      statusCode: 200,
+      body : res
+    }
+    return response; 
 }
