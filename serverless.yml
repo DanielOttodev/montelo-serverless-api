@@ -3,6 +3,8 @@ app: montelo-api
 service: montelo-api
 frameworkVersion: '3'
 
+plugins:
+  - serverless-offline
 
 provider:
   name: aws
@@ -111,3 +113,10 @@ functions:
       - httpApi:
           path: /client/{id}
           method: delete
+#Organisation
+  newOrgUser:
+    handler: org.addOrg
+    events:
+      - httpApi:
+          path: /org
+          method: post
