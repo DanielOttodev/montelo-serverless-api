@@ -13,9 +13,13 @@ exports.addOrg = async (event) => {
 let e = JSON.parse(event.body)
 e.businessName = e.businessName.replace("'","")
 console.log(e);
-console.log(`INSERT INTO Organisation VALUES ('${e.businessName}','${e.serviceType}','${e.staffLimit}','${e.uid}')`);
-const res = await query(`INSERT INTO Organisation VALUES ('${e.businessName}','${e.serviceType}','${e.staffLimit}','${e.uid}')`)
- await query (`UPDATE Users SET FirstName = '${e.fname}' and LastName = '${e.sname}'`)
+console.log(`UPDATE Users SET FirstName = '${e.fname}' , LastName = '${e.sname}'`)
+const res = await query(`
+INSERT INTO Organisation VALUES ('${e.businessName}','${e.serviceType}','${e.staffLimit}','${e.uid}')
+INSERT INTO USERS VALUES ('${e.uid}','${e.email}','${e.fname}','${e.sname}','${e.phone}')
+`)
+
+ //await query (`UPDATE Users SET FirstName = '${e.fname}' , LastName = '${e.sname}' where uid = '${e.uid}'`)
 return {
   statusCode: 200,
   status:200,

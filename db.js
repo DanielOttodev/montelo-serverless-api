@@ -4,6 +4,7 @@ const {config} = require('./config')
 
 exports.query = async (query) => {
       // Close the connection
+      console.log(query);
       try {
         let conn = await sql.connect(config)
         const result = await sql.query(query)
