@@ -6,7 +6,7 @@ exports.listOrg = async (event) => {
 }
 exports.getOrg = async (event) => {
 console.log(event);
-const res = await query(`SELECT OrgId from Users where Uid = ${event.pathParameters.id}`)
+const res = await query(`SELECT OrgId from Users where Uid = '${event.pathParameters.id}'`)
 return {
   statusCode: 200,
   status:200,

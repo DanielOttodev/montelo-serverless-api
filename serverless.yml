@@ -27,7 +27,7 @@ functions:
     handler: users.listUsers
     events:
       - httpApi:
-          path: /users
+          path: /users/list
           method: get
           authorizer: 
             name: customAuthorizer
@@ -45,12 +45,16 @@ functions:
       - httpApi:
           path: /users
           method: post
+          authorizer: 
+            name: customAuthorizer   
   editUser:
     handler: users.editUser
     events:
       - httpApi:
           path: /users/{id}
           method: patch
+          authorizer: 
+            name: customAuthorizer
 # Services
   listServices:
     handler: services.listService
@@ -64,24 +68,32 @@ functions:
       - httpApi:
           path: /services/{id}
           method: get
+          authorizer: 
+            name: customAuthorizer
   addService:
     handler: services.addService
     events:
       - httpApi:
           path: /services
           method: post
+          authorizer: 
+            name: customAuthorizer
   editService:
     handler: services.editService
     events:
       - httpApi:
           path: /services/{id}
           method: patch
+          authorizer: 
+            name: customAuthorizer
   deleteService:
     handler: services.deleteService
     events:
       - httpApi:
           path: /services/{id}
           method: delete
+          authorizer: 
+            name: customAuthorizer
 # Clients
   listClients:
     handler: client.listClients
@@ -89,30 +101,40 @@ functions:
       - httpApi:
           path: /client
           method: get
+          authorizer: 
+            name: customAuthorizer
   getClient:
     handler: client.getClient
     events:
       - httpApi:
           path: /client/{id}
           method: get
+          authorizer: 
+            name: customAuthorizer
   addClient:
     handler: client.addClient
     events:
       - httpApi:
           path: /client
           method: post
+          authorizer: 
+            name: customAuthorizer
   editClient:
     handler: client.editClient
     events:
       - httpApi:
           path: /client/{id}
           method: patch
+          authorizer: 
+            name: customAuthorizer
   deleteClient:
     handler: client.deleteClient
     events:
       - httpApi:
           path: /client/{id}
           method: delete
+          authorizer: 
+            name: customAuthorizer
 #Organisation
   newOrgUser:
     handler: org.addOrg
@@ -120,6 +142,7 @@ functions:
       - httpApi:
           path: /org
           method: post
+
   getOrg:
     handler: org.getOrg
     events:

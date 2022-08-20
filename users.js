@@ -2,12 +2,12 @@
 const {query} = require('./db')
 
 module.exports.listUsers = async (event) => {
-  console.log('/getUser');
+  console.log('/listUsers');
   console.log(event);
-  const res = await query("select * from Users")
+  const res = await query(`select * from Users where OrgId = ${event.headers.orgid}`)
   let response = {
     statusCode: 200,
-    body : res
+    body : JSON.stringify(res)
   }
   return response;
   }
@@ -19,7 +19,7 @@ module.exports.getUser = async (event) => {
   const res = await query("select * from Users where OrgId = '32' ")
   let response = {
     statusCode: 200,
-    body : res
+    body : JSON.stringify(res)
   }
   return response;
 }
