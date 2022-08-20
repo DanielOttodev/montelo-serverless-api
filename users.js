@@ -16,7 +16,7 @@ module.exports.listUsers = async (event) => {
 module.exports.getUser = async (event) => {
   console.log('/getUser');
   console.log(event);
-  const res = await query("select * from Users where Firstname like '%dan%' ")
+  const res = await query("select * from Users where OrgId = '32' ")
   let response = {
     statusCode: 200,
     body : res

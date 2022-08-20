@@ -8,6 +8,7 @@ exports.query = async (query) => {
       try {
         let conn = await sql.connect(config)
         const result = await sql.query(query)
+        console.log(result)
         console.log('Success')
         conn.close()
           
@@ -19,7 +20,9 @@ exports.query = async (query) => {
           console.log('ERROR:', err)
           return err
         })
-        return JSON.stringify(result);
+        return JSON.stringify({
+          statusCode:200,
+          res: result});
       } catch (error) {
         console.log('ERROR:' ,error);
         return error
