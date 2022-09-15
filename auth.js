@@ -1,4 +1,4 @@
-var admin = require("firebase-admin");
+const admin = require("firebase-admin");
 const {
   getAuth
 } = require('firebase-admin/auth');
