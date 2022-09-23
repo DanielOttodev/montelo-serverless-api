@@ -2,7 +2,7 @@ const {query} = require('./db')
 
 exports.listService = async (event) => {
     console.log(event);
-    const res = await query("select * from Services")
+    const res = await query("select * from Service")
     let response = {
       statusCode: 200,
       body : res
@@ -10,7 +10,7 @@ exports.listService = async (event) => {
     return response; }
 exports.getService = async (event) => {
     console.log(event);
-    const res = await query(`select * from Services where serviceId = ${event.pathParameters.id}`)
+    const res = await query(`select * from Service where serviceId = ${event.pathParameters.id}`)
     let response = {
       statusCode: 200,
       body : res
@@ -19,7 +19,7 @@ exports.getService = async (event) => {
 }
 exports.addService = async (event) => {
     console.log(event);
-    const res = await query(`INSERT into Services VALUES ()`)
+    const res = await query(`INSERT into Service VALUES ()`)
     let response = {
       statusCode: 200,
       body : res
@@ -31,7 +31,7 @@ exports.editService = async (event) => {
 }
 exports.deleteService = async (event) => {
     console.log(event);
-    const res = await query(`DELETE from Services where serviceId = var  and businessId = var `)
+    const res = await query(`DELETE from Service where serviceId = var  and businessId = var `)
     let response = {
       statusCode: 200,
       body : res
